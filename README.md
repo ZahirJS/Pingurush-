@@ -1,4 +1,4 @@
-# <div align="center">🐧 Pingurush! 🐧</div>
+# <div align="center">Pingurush!</div>
 
 <div align="center">
   <img src="art/swalk2.png" alt="Pingurush Character" width="150"/>
