@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://brnqoe7uqoexw"]
+
+[ext_resource type="Script" uid="uid://cika05o45nwqf" path="res://player.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://c5aecmas2y5uq" path="res://art/sup1.png" id="2_b26j0"]
+[ext_resource type="Texture2D" uid="uid://bst2a2e0t2hat" path="res://art/up1-removebg-preview.png" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://d6y537353r3w" path="res://art/up2-removebg-preview.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://dn8vshfv0v3d6" path="res://art/sup2.png" id="3_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://occ56cvxneu2" path="res://art/r1-removebg-preview.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://xlef2f5qow52" path="res://art/swalk1.png" id="4_nvl01"]
+[ext_resource type="Texture2D" uid="uid://b02yjq0x3cky5" path="res://art/r2-removebg-preview.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://ct7g52hwksj86" path="res://art/swalk2.png" id="5_ivps1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n7ghd")
+}],
+"loop": true,
+"name": &"sprint_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nvl01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ivps1")
+}],
+"loop": true,
+"name": &"sprint_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sweqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2hs0m")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dw050")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b26j0"]
+radius = 33.0
+height = 114.0
+
+[node name="Player" type="Area2D"]
+position = Vector2(-14, -12)
+script = ExtResource("1_sweqy")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_dw050")
+animation = &"sprint_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_b26j0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
